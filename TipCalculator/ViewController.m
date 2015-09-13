@@ -9,10 +9,10 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,4 +24,33 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) calculateTip:(float)currentPrice {
+    float tip = 0;
+    float total = 0;
+    switch (_segmentedControl.selectedSegmentIndex) {
+        case 0:
+            tip = currentPrice * 0.1;
+            break;
+        case 1:
+            tip = currentPrice * 0.15;
+            break;
+        case 2:
+            tip = currentPrice * 0.2;
+            break;
+    }
+    _tip.text = [NSString stringWithFormat:@"$%.2f", tip];
+    total = currentPrice + tip;
+    _total.text = [NSString stringWithFormat:@"$%.2f", total];
+
+}
+
+- (IBAction)segmentedControlAction:(id)sender {
+    float currentPrice = _textfield.text.floatValue;
+    [self calculateTip:currentPrice];
+}
+
+- (IBAction)textFieldAction:(id)sender {
+    float currentPrice = _textfield.text.floatValue;
+    [self calculateTip:currentPrice];
+}
 @end

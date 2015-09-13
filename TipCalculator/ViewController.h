@@ -10,6 +10,15 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *textfield;
+- (IBAction)textFieldAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+- (IBAction)segmentedControlAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *tip;
+@property (weak, nonatomic) IBOutlet UILabel *total;
+
+- (void)calculateTip: (float)currentPrice;
 
 @end
 
